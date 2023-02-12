@@ -33,14 +33,13 @@ function move(direction) {
   prev.classList.remove(...classesToRemove);
   current.classList.remove(...classesToRemove);
   next.classList.remove(...classesToRemove);
-
+  console.log("Enter is pressed move function");
 //   if(direction ==='back') {
 //     [prev, current, next].forEach( element => element = element.previousElementSibling || slides.lastElementChild)
 //   }
 //  else {
 //     [prev, current, next].forEach( element => element = element.nextElementSibling || slides.firstElementChild)
 //   }
-
 // using array destructuring
 if(direction === 'back') {
   [prev, current, next] = [prev.previousElementSibling || slides.lastElementChild, prev, current]
@@ -51,6 +50,17 @@ else {
 
 applyClasses();
 }
+
+function handleEnter(event) {
+  debugger;
+  if(event.key === 'Enter' && event.target.classList.contains('goToPrev')){
+    move('back');
+  }
+  else if(event.key === 'Enter' && event.target.classList.contains('goToNext')) {
+    move();
+  }
+}
+
 
 startSlider(); 
 applyClasses();
